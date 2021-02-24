@@ -1,9 +1,83 @@
  /* Общие стили */
+ html {
+     box-sizing: border-box;
+ }
+
+ *,
+ *::before,
+ *::after {
+     box-sizing: inherit;
+ }
 
  body {
-     padding: 0;
+     padding: 15px;
      margin: 0;
      box-sizing: border-box;
+     font-family: serif;
+     display: flex;
+     justify-self: center;
+ }
+
+
+ .tab {
+     width: 90%;
+     margin-top: 20px;
+ }
+
+ .tab__list {
+     margin: 0;
+     padding: 0;
+     list-style-type: none;
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+ }
+
+ .tab__item {
+     margin-right: 30px;
+     font-size: 18px;
+     padding: 10px 20px;
+     cursor: pointer;
+     position: relative;
+ }
+
+ .tab__item::before {
+     position: absolute;
+     content: "";
+     top: 0;
+     left: 0;
+     right: 0;
+     height: 100%;
+     z-index: -1;
+     
+
+ }
+ .tab__item:last-child {
+     margin-right: 0;
+ }
+
+ .tab__item--active {
+     background-color: tomato;
+     color: white;
+    
+ }
+
+ .tab__item--active::before {
+    background-color: tomato;
+    
+}
+
+ .tab__body {
+     margin-top: 40px;
+ }
+
+ .tab--hidden {
+     display: none;
+ }
+
+ .content-form {
+     display: flex;
+     justify-content: center;
  }
 
 
@@ -14,47 +88,7 @@
      overflow: auto;
  }
 
- /* Вкладки */
-
- .tabs {
-     width: 100%;
-     padding: 0px;
-     margin: 0 auto;
- }
-
- .tabs__input {
-     display: none;
- }
-
- .tabs__content {
-     display: none;
-     padding: 12px;
-     border: 1px solid #C0C0C0;
-     background: #FFFFFF;
- }
-
- .tabs__label {
-     display: inline-block;
-     padding: 7px;
-     margin: 0 -5px -1px 0;
-     text-align: center;
-     color: #666666;
-     border: 1px solid #C0C0C0;
-     background: #E0E0E0;
-     cursor: pointer;
- }
-
- .tabs__input:checked+label {
-     color: #000000;
-     border: 1px solid #C0C0C0;
-     border-bottom: 1px solid #FFFFFF;
-     background: #FFFFFF;
- }
-
- #tab_1:checked~#txt_1,
- #tab_2:checked~#txt_2 {
-     display: block;
- }
+ 
 
  .section {
      height: 80vh;
@@ -67,13 +101,14 @@
 
  .section__button {
      border: none;
+     height: 60px;
      border-radius: 12px;
      outline: none;
      background-color: aquamarine;
      color: black;
      font-size: 24px;
      font-family: serif;
-     padding: 20px;
+     padding: 10px;
      cursor: pointer;
  }
 
@@ -83,9 +118,11 @@
      margin-top: 30px;
  }
 
- #test-box {
-     width: 150px;
-     height: 150px;
-     background: grey;
-     margin: 30px;
+ form {
+     display: flex;
+     flex-direction: column;
+     margin: 0 650px;
+     align-items: flex-start;
+     
+     
  }

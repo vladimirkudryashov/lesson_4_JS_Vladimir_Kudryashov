@@ -14,7 +14,37 @@
 //     }
 
 // })
+document.addEventListener("DOMContentLoaded", function () {
+    let tabsContent = document.querySelectorAll(".tab__content");
+    let tabsControl = document.querySelectorAll(".tab__item");
 
+    tabsControl.forEach( elem => {
+        elem.addEventListener("click", function () {
+            showTabContent(elem.dataset.tabnumber);
+            tabsControl.forEach(elem => {
+                elem.classList.remove("tab__item--active");
+            });
+            this.classList.add("tab__item--active");
+        });
+
+    });
+
+    function hideTabContent() {
+        for (let i = 1; i < tabsContent.length; i++) {
+            tabsContent[i].classList.add("tab--hidden");
+        }
+    };
+
+    hideTabContent();
+
+    function showTabContent (tabnumber) {
+        for (let i = 0; i < tabsContent.length; i++) {
+            tabsContent[i].classList.add("tab--hidden");
+        };
+        tabsContent[tabnumber - 1].classList.remove("tab--hidden");
+    };
+
+});
 
 // ВТОРОЙ ИЗ ВАРИАНТОВ РЕШЕНИЯ ПО СМЕНЕ ЦВЕТА
 const h2El = document.querySelector('h2');
@@ -69,8 +99,8 @@ function TopLeftborderRadiusGenerator() {
     var outtopleft = document.getElementById('out-top-left');
     // console.log(this.value);
     div.style.borderTopLeftRadius = this.value + 'px';
-    
-   
+
+
     outtopleft.innerHTML = 'Top-Left Radius: ' + this.value + 'px;\n';
 }
 
@@ -83,9 +113,9 @@ function TopRightborderRadiusGenerator() {
     var outtopright = document.getElementById('out-top-right');
     // console.log(this.value);
     div.style.borderTopRightRadius = this.value + 'px';
-    
-   
-    outtopright.innerHTML = 'Top-Right Radius: '+ this.value + 'px;';
+
+
+    outtopright.innerHTML = 'Top-Right Radius: ' + this.value + 'px;';
 }
 
 document.getElementById('r3').oninput = BottomLeftborderRadiusGenerator;
@@ -97,9 +127,9 @@ function BottomLeftborderRadiusGenerator() {
     let outbottomleft = document.getElementById('out-bottom-left');
     // console.log(this.value);
     div.style.borderBottomLeftRadius = this.value + 'px';
-    
-   
-    outbottomleft.innerHTML = 'Bottom-Left Radius: '+ this.value + 'px;';
+
+
+    outbottomleft.innerHTML = 'Bottom-Left Radius: ' + this.value + 'px;';
 }
 
 
@@ -111,8 +141,74 @@ function BottomRightborderRadiusGenerator() {
     // получаю textarea
     let outbottomright = document.getElementById('out-bottom-right');
     // console.log(this.value);
-    div.style.borderBottomRightRadius= this.value + 'px';
-    
-   
-    outbottomright.innerHTML = 'Bottom-Right Radius: '+ this.value + 'px;';
+    div.style.borderBottomRightRadius = this.value + 'px';
+
+
+    outbottomright.innerHTML = 'Bottom-Right Radius: ' + this.value + 'px;';
 }
+
+
+// Форма
+
+let phoneFields = document.querySelectorAll(".phoneInput");
+let im = new Inputmask("+38 (099) 999-99-99");
+im.mask(phoneFields);
+
+new JustValidate('.js-form', {
+    rules: {
+        name: {
+            required: true,
+            minLength: 2,
+            maxLength: 15
+        },
+        email: {
+            required: true,
+            email: true
+        },
+        phone: {
+            required: true,
+        }
+    },
+    messages: {
+        name: {
+            minLength: "не меньше 2-х символов"
+        },
+        email: {
+            email: "надо добавить символ @"
+        },
+        phone: {
+            required: "Напиши свой номер телефона, а не белиберду"
+        }
+
+
+    },
+
+    submitHandler: function (form) {
+        let xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "mail.php", true);
+
+        let formData = new FormData(form);
+
+        xhr.addEventListener("load", function(){
+            if( xhr.readyState === 4) {
+                switch (xhr.status) {
+                    case 200:
+                        console.log("Форма отправлена");
+                        form.reset();
+                        break;
+                    case 404:
+                        console.log("Ничего не вышло");
+                        break;
+                    default:
+                        console.log("Error");
+                        break;   
+                    }
+            }
+        });
+        
+        xhr.send(formData);
+
+
+    },
+});

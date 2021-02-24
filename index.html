@@ -1,41 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
+ <!DOCTYPE html>
+ <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
-</head>
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="css/normalize.css">
+     <link rel="stylesheet" href="css/skeleton.css">
+     <link rel="stylesheet" href="css/style.css">
+     <title>Document</title>
+ </head>
 
-<body>
-    <div class="tabs">
-        <input class="tabs__input" type="radio" name="inset" value="" id="tab_1" checked>
-        <label class="tabs__label" for="tab_1">Вкладка №1</label>
+ <body>
+     <div class="tab">
+         <ul class="tab__list">
+             <li class="tab__item tab__item--active" data-tabnumber="1"> Tab 1</li>
+             <li class="tab__item" data-tabnumber="2"> Tab 2</li>
+             <li class="tab__item" data-tabnumber="3"> Tab 3</li>
+         </ul>
+         <div class="tab__body">
+             <div class="tab__content">
+                 <section class="section">
+                     <button class="section__button">Нажми пробел</button>
+                     <h2 class="section__colorname">Color code</h2>
+                 </section>
+             </div>
+             <div class="tab__content">
+                 <p>Top-left Radius: <input type="range" id="r1" value="0"></p>
+                 <p>Top-right Radius: <input type="range" id="r2" value="0"></p>
+                 <p>Bottom-left Radius: <input type="range" id="r3" value="0"></p>
+                 <p>Bottom-right Radius: <input type="range" id="r4" value="0"></p>
+                 <div id="test-box"></div>
+                 <textarea id="out-top-left"></textarea>
+                 <textarea id="out-top-right"></textarea>
+                 <textarea id="out-bottom-left"></textarea>
+                 <textarea id="out-bottom-right"></textarea>
+             </div>
+             <div class="tab__content">
+                 <form action="#" method="POST" class="js-form">
+                     <div class="row">
+                         <div class="six columns">
+                             <label for="exampleEmailInput">Your email</label>
+                             <input class="u-full-width" type="email" name="user-email" placeholder="test@mailbox.com"
+                                 id="exampleEmailInput" required data-validate-field="email">
+                         </div>
+                         <div class="six columns">
+                             <label for="exampleRecipientInput">Your name</label>
+                             <input type="text" name="user-name" placeholder="Enter your name"
+                                 data-validate-field="name" required>
+                         </div>
+                     </div>
+                     <div>
+                         <label for="exampleRecipientInput">Phone</label>
+                         <input class="phoneInput" type="tel" placeholder="Enter your phone" name="user-phone"
+                             data-validate-field="phone" required>
+                     </div>
+                     <label for="exampleMessage">Message</label>
+                     <textarea class="u-full-width" placeholder="Hi Dave …" id="exampleMessage" name="user-message"
+                         required></textarea>
+                     <label class="example-send-yourself-copy">
+                         <input type="checkbox">
+                         <span class="label-body">Send a copy to yourself</span>
+                     </label>
+                     <input class="button-primary" type="submit" value="Submit">
+                 </form>
+             </div>
+         </div>
+     </div>
+     <script src="js/inputmask.min.js"></script>
+     <script src="js/just-validate.min.js"></script>
+     <script src="js/common.js"></script>
+ </body>
 
-        <input class="tabs__input" type="radio" name="inset" value="" id="tab_2">
-        <label class="tabs__label" for="tab_2">Вкладка №2</label>
-
-        <div class="tabs__content" id="txt_1">
-            <section class="section">
-                <button class="section__button">Нажми пробел</button>
-                <h2 class="section__colorname">Color code</h2>
-            </section>
-        </div>
-        <div class="tabs__content" id="txt_2">
-            <p>Top-left Radius: <input type="range" id="r1" value="0"></p>
-            <p>Top-right Radius: <input type="range" id="r2" value="0"></p>
-            <p>Bottom-left Radius: <input type="range" id="r3" value="0"></p>
-            <p>Bottom-right Radius: <input type="range" id="r4" value="0"></p>
-            <div id="test-box"></div>
-            <textarea id="out-top-left"></textarea>
-            <textarea id="out-top-right"></textarea>
-            <textarea id="out-bottom-left"></textarea>
-            <textarea id="out-bottom-right"></textarea>
-        </div>
-    </div>
-
-    <script src="js/common.js"></script>
-</body>
-
-</html>
+ </html>
