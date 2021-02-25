@@ -87,65 +87,41 @@ document.addEventListener('keydown', function (evt) {
 
 
 // ГЕНЕРАТОР border-radius
-// !не могу понять, как сделать так, чтобы не дублировать код для каждого угла прямоугольника.
-// ! также не могу понять, почему если использую class="test-box" в html и css, 
-// ! а в javascript пишу var div = document.getElementByClassname('test-box'); - то код не работает почему-то
-document.getElementById('r1').oninput = TopLeftborderRadiusGenerator;
+const box = document.querySelector('.test-box');
 
-function TopLeftborderRadiusGenerator() {
-    // прямоугольник
-    var div = document.getElementById('test-box');
-    // получаю textarea
-    var outtopleft = document.getElementById('out-top-left');
-    // console.log(this.value);
-    div.style.borderTopLeftRadius = this.value + 'px';
+const tlRange = document.querySelector('.tl_range');
+const trRange = document.querySelector('.tr_range');
+const blRange = document.querySelector('.bl_range');
+const brRange = document.querySelector('.br_range');
 
-
-    outtopleft.innerHTML = 'Top-Left Radius: ' + this.value + 'px;\n';
-}
-
-document.getElementById('r2').oninput = TopRightborderRadiusGenerator;
-
-function TopRightborderRadiusGenerator() {
-    // прямоугольник
-    var div = document.getElementById('test-box');
-    // получаю textarea
-    var outtopright = document.getElementById('out-top-right');
-    // console.log(this.value);
-    div.style.borderTopRightRadius = this.value + 'px';
+const textTL = document.querySelector('.textTL');
+const textTR = document.querySelector('.textTR');
+const textBL = document.querySelector('.textBL');
+const textBR = document.querySelector('.textBR');
 
 
-    outtopright.innerHTML = 'Top-Right Radius: ' + this.value + 'px;';
-}
+tlRange.addEventListener('input', function () {
+    box.style.borderTopLeftRadius = this.value + 'px' ;
+    textTL.textContent = "border-radius: " + this.value + "px";
+});
 
-document.getElementById('r3').oninput = BottomLeftborderRadiusGenerator;
+trRange.addEventListener('input', function () {
+    box.style.borderTopRightRadius = this.value + 'px' ;
+    textTR.textContent = "border-radius: " + this.value + "px";
+});
 
-function BottomLeftborderRadiusGenerator() {
-    // прямоугольник
-    var div = document.getElementById('test-box');
-    // получаю textarea
-    let outbottomleft = document.getElementById('out-bottom-left');
-    // console.log(this.value);
-    div.style.borderBottomLeftRadius = this.value + 'px';
+blRange.addEventListener('input', function () {
+    box.style.borderBottomLeftRadius = this.value + 'px' ;
+    textBL.textContent = "border-radius: " + this.value + "px";
+});
 
-
-    outbottomleft.innerHTML = 'Bottom-Left Radius: ' + this.value + 'px;';
-}
-
-
-document.getElementById('r4').oninput = BottomRightborderRadiusGenerator;
-
-function BottomRightborderRadiusGenerator() {
-    // прямоугольник
-    var div = document.getElementById('test-box');
-    // получаю textarea
-    let outbottomright = document.getElementById('out-bottom-right');
-    // console.log(this.value);
-    div.style.borderBottomRightRadius = this.value + 'px';
+brRange.addEventListener('input', function () {
+    box.style.borderBottomRightRadius = this.value + 'px' ;
+    textBR.textContent = "border-radius: " + this.value + "px";
+});
 
 
-    outbottomright.innerHTML = 'Bottom-Right Radius: ' + this.value + 'px;';
-}
+
 
 
 // Форма
